@@ -33,6 +33,11 @@ namespace InformationTheoryExp_1
             this.Close();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Encoder_Decoder f5 = new Encoder_Decoder();
+            f5.Show();
+            this.Close();
+        }
     }
 }

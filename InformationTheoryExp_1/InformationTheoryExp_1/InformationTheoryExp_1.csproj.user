@@ -4,6 +4,9 @@
     <Compile Update="DisSequenceEntropy.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Encoder_Decoder.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="HelloFrm.cs">
       <SubType>Form</SubType>
     </Compile>

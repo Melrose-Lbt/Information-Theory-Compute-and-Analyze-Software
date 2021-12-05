@@ -17,3 +17,4 @@ D:\CSharpProject\InformationTheoryExp_1\InformationTheoryExp_1\obj\Debug\netcore
 D:\CSharpProject\InformationTheoryExp_1\InformationTheoryExp_1\obj\Debug\netcoreapp3.1\InformationTheoryExp_1.SystemFigure.resources
 D:\CSharpProject\InformationTheoryExp_1\InformationTheoryExp_1\obj\Debug\netcoreapp3.1\InformationTheoryExp_1.DisSequenceEntropy.resources
 D:\CSharpProject\InformationTheoryExp_1\InformationTheoryExp_1\obj\Debug\netcoreapp3.1\InformationTheoryExp_1.SignalEntropy.resources
+D:\CSharpProject\InformationTheoryExp_1\InformationTheoryExp_1\obj\Debug\netcoreapp3.1\InformationTheoryExp_1.Encoder_Decoder.resources
