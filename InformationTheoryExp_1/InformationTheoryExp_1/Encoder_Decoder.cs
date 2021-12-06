@@ -60,6 +60,44 @@ namespace InformationTheoryExp_1
                 }
             }
         }
+
+        private void Huffman_Decoder_Click(object sender, EventArgs e)
+        {
+            label2.Text = " ";
+            string arr = EncodeTextbox.Lines[0];
+            Huffman huf = new Huffman(arr, EncodeTextbox.Lines[0].Length, ProbOfHuff.Lines[0]);
+            string[] code = huf.CodeList();
+
+            string mess = DecodeBox.Lines[0];
+            string[] signal = new string[DecodeBox.Lines[0].Length];
+            for (int i = 0; i < DecodeBox.Lines[0].Length; i++)     /*split the message into single word*/
+            {
+                signal[i] = mess.Substring(i, 1);
+            }
+
+
+            int j = 0;
+            string message = "";
+            while (j < DecodeBox.Lines[0].Length)
+            {
+                int k = 2 * huf.LenOfMess - 1;
+                while (huf.tree[k].leftchild != 0 && huf.tree[k].rightchild != 0)
+                {
+                    /*判断该处的代码是0还是1，0往左边走，1往右边走*/
+                    if (signal[j] == "1")
+                    {
+                        k = huf.tree[k].rightchild;
+                    }
+                    if (signal[j] == "0")
+                    {
+                        k = huf.tree[k].leftchild;
+                    }
+                    j++;
+                }
+                message += huf.message[k-1];
+            }
+            label2.Text = message;
+        }
     }
 
     public class Huffman

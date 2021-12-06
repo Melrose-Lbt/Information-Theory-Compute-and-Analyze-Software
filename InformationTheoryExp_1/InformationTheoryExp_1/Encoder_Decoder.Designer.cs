@@ -33,10 +33,13 @@ namespace InformationTheoryExp_1
             this.LZ_Encoder = new System.Windows.Forms.Button();
             this.EncodeTextbox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.HUFEncode = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LZ_Decoder = new System.Windows.Forms.Button();
             this.Huffman_Decoder = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.hufcodelabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DecodeBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -49,12 +52,11 @@ namespace InformationTheoryExp_1
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.Codelist = new System.Windows.Forms.Label();
-            this.HUFEncode = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.hufcodelabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +103,18 @@ namespace InformationTheoryExp_1
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // HUFEncode
+            // 
+            this.HUFEncode.BackColor = System.Drawing.Color.Silver;
+            this.HUFEncode.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HUFEncode.Location = new System.Drawing.Point(22, 77);
+            this.HUFEncode.Name = "HUFEncode";
+            this.HUFEncode.Size = new System.Drawing.Size(159, 36);
+            this.HUFEncode.TabIndex = 20;
+            this.HUFEncode.Text = "Huffman Encode";
+            this.HUFEncode.UseVisualStyleBackColor = false;
+            this.HUFEncode.Click += new System.EventHandler(this.HUFEncode_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.LZ_Decoder);
@@ -132,6 +146,7 @@ namespace InformationTheoryExp_1
             this.Huffman_Decoder.TabIndex = 4;
             this.Huffman_Decoder.Text = "Huffman Decode";
             this.Huffman_Decoder.UseVisualStyleBackColor = false;
+            this.Huffman_Decoder.Click += new System.EventHandler(this.Huffman_Decoder_Click);
             // 
             // groupBox3
             // 
@@ -144,6 +159,24 @@ namespace InformationTheoryExp_1
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Code";
+            // 
+            // hufcodelabel
+            // 
+            this.hufcodelabel.AutoSize = true;
+            this.hufcodelabel.Location = new System.Drawing.Point(6, 96);
+            this.hufcodelabel.Name = "hufcodelabel";
+            this.hufcodelabel.Size = new System.Drawing.Size(12, 17);
+            this.hufcodelabel.TabIndex = 1;
+            this.hufcodelabel.Text = " ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Hufcode:";
             // 
             // label6
             // 
@@ -166,6 +199,7 @@ namespace InformationTheoryExp_1
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox4.Location = new System.Drawing.Point(437, 170);
             this.groupBox4.Name = "groupBox4";
@@ -257,7 +291,7 @@ namespace InformationTheoryExp_1
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox6.Location = new System.Drawing.Point(12, 56);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(170, 202);
+            this.groupBox6.Size = new System.Drawing.Size(176, 202);
             this.groupBox6.TabIndex = 18;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Huffman";
@@ -272,35 +306,14 @@ namespace InformationTheoryExp_1
             this.Codelist.TabIndex = 19;
             this.Codelist.Text = "Huffman码表";
             // 
-            // HUFEncode
+            // label2
             // 
-            this.HUFEncode.BackColor = System.Drawing.Color.Silver;
-            this.HUFEncode.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.HUFEncode.Location = new System.Drawing.Point(22, 77);
-            this.HUFEncode.Name = "HUFEncode";
-            this.HUFEncode.Size = new System.Drawing.Size(159, 36);
-            this.HUFEncode.TabIndex = 20;
-            this.HUFEncode.Text = "Huffman Encode";
-            this.HUFEncode.UseVisualStyleBackColor = false;
-            this.HUFEncode.Click += new System.EventHandler(this.HUFEncode_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Hufcode:";
-            // 
-            // hufcodelabel
-            // 
-            this.hufcodelabel.AutoSize = true;
-            this.hufcodelabel.Location = new System.Drawing.Point(6, 96);
-            this.hufcodelabel.Name = "hufcodelabel";
-            this.hufcodelabel.Size = new System.Drawing.Size(12, 17);
-            this.hufcodelabel.TabIndex = 1;
-            this.hufcodelabel.Text = " ";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = " ";
             // 
             // Encoder_Decoder
             // 
@@ -320,6 +333,8 @@ namespace InformationTheoryExp_1
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -354,5 +369,6 @@ namespace InformationTheoryExp_1
         private System.Windows.Forms.Button HUFEncode;
         private System.Windows.Forms.Label hufcodelabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
