@@ -10,6 +10,8 @@ namespace InformationTheoryExp_1
 {
     public partial class Encoder_Decoder : Form
     {
+        public string[] Elem;
+        public int[] code;
         public Encoder_Decoder()
         {
             InitializeComponent();
@@ -63,7 +65,7 @@ namespace InformationTheoryExp_1
 
         private void Huffman_Decoder_Click(object sender, EventArgs e)
         {
-            label2.Text = " ";
+            label2.Text = "";
             string arr = EncodeTextbox.Lines[0];
             Huffman huf = new Huffman(arr, EncodeTextbox.Lines[0].Length, ProbOfHuff.Lines[0]);
             string[] code = huf.CodeList();
@@ -98,6 +100,160 @@ namespace InformationTheoryExp_1
             }
             label2.Text = message;
         }
+
+        private void LZ_Encoder_Click(object sender, EventArgs e)
+        {
+            label10.Text = "";
+            label14.Text = "";
+            LZ lz = new LZ(textBox1.Text, textBox1.Lines[0].Length);
+            string p, s, ps;
+
+            string[] signal = new string[EncodeBox.Lines[0].Length];
+            for (int i = 0; i < EncodeBox.Lines[0].Length; i++)     /*split the message into single word*/
+            {
+                signal[i] = EncodeBox.Text.Substring(i, 1);
+            }
+
+            p = signal[lz.LenOf_singleElem-1];
+            /* separate i and k, because if use i to control the whole process there will be a bug here */
+            int m = lz.LenOf_singleElem - 1; 
+            for (int i = lz.LenOf_singleElem-1; i < EncodeBox.Lines[0].Length - 1; i++)
+            {
+                s = signal[i + 1];
+                ps = p + s;
+                if(lz.FindElem(ps) == 1)
+                {
+                    p = ps;
+                    m--;
+                }
+                else
+                {
+                    lz.singleElem[m + 1] = ps;
+                    lz.code[m + 1] = lz.code[m] + 1;
+                    p = s;
+                }
+                m++;
+            }
+
+            int k = 0;
+            while (lz.singleElem[k] != "") 
+            {
+                
+                label10.Text += lz.singleElem[k] + ":" + lz.code[k] + " ";
+                label14.Text += lz.code[k] + " ";
+                if (k!=0 && k % 3 == 0)
+                {
+                    label10.Text += "\n";
+                }
+                k++;
+                
+            }
+
+            this.Elem = lz.singleElem;
+            this.code = lz.code;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label9.Text = "";
+
+            LZ lz = new LZ(textBox1.Text, textBox1.Lines[0].Length);
+
+            for (int i=0;i< textBox1.Lines[0].Length; i++)
+            {
+                label9.Text += lz.singleElem[i] + ":" + lz.code[i] + "\n";
+            }
+        }
+
+        private void LZ_Decoder_Click(object sender, EventArgs e)
+        {
+            label15.Text = "";
+            string[] mess = DecodeBox.Text.Split(" ");
+            
+            for(int j = 0; j < mess.Length; j++)
+            {
+                int i = 0;
+                while (this.code[i] != 0)
+                {
+                    if (this.code[i] == Convert.ToInt32(mess[j]))
+                    {
+                        label15.Text += this.Elem[i] + " ";
+                        break;
+                       
+                    }
+                    i++;
+                }
+            }
+            
+        }
+    }
+
+    public class LZ
+    {
+        public string[] singleElem = new string[100];
+        public int LenOf_singleElem;
+        public int[] code = new int[100];
+
+        public LZ(string mess, int len)
+        {
+            this.LenOf_singleElem = len;
+            this.singleElem = Elem_Init(mess);
+            this.code = Code_Init();
+        }
+
+        public string[] Elem_Init(string message)
+        {
+            string mess = message;
+            string[] signal = new string[100];
+            for (int i = 0; i < code.Length; i++)     /*split the message into single word*/
+            {
+                if (i < this.LenOf_singleElem)
+                {
+                    signal[i] = mess.Substring(i, 1);
+                }
+                else
+                {
+                    signal[i] = "";
+                }
+            }
+
+            return signal; /*return a string array*/
+        }
+
+        public int[] Code_Init()
+        {
+            int[] code = new int[100];
+            int cnt = 1;
+            for(int i = 0; i < code.Length; i++)
+            {
+                if (i < this.LenOf_singleElem)
+                {
+                    code[i] = cnt;
+                    cnt++;
+                }
+                else
+                {
+                    code[i] = 0;
+                }
+                
+            }
+            return code;
+        }
+
+        /* To find whether elem in the list */ 
+        public int FindElem(string elem)
+        {
+            for(int i = 0; i < this.singleElem.Length; i++)
+            {
+                if(elem == singleElem[i])
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
     }
 
     public class Huffman

@@ -38,11 +38,17 @@ namespace InformationTheoryExp_1
             this.LZ_Decoder = new System.Windows.Forms.Button();
             this.Huffman_Decoder = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.hufcodelabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.DecodeBox = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.EncodeBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,14 +57,22 @@ namespace InformationTheoryExp_1
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.Codelist = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // Huffman_Encoder
@@ -84,6 +98,7 @@ namespace InformationTheoryExp_1
             this.LZ_Encoder.TabIndex = 5;
             this.LZ_Encoder.Text = "LZ Encode";
             this.LZ_Encoder.UseVisualStyleBackColor = false;
+            this.LZ_Encoder.Click += new System.EventHandler(this.LZ_Encoder_Click);
             // 
             // EncodeTextbox
             // 
@@ -119,7 +134,7 @@ namespace InformationTheoryExp_1
             // 
             this.groupBox2.Controls.Add(this.LZ_Decoder);
             this.groupBox2.Controls.Add(this.Huffman_Decoder);
-            this.groupBox2.Location = new System.Drawing.Point(212, 170);
+            this.groupBox2.Location = new System.Drawing.Point(212, 186);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(197, 140);
             this.groupBox2.TabIndex = 8;
@@ -135,6 +150,7 @@ namespace InformationTheoryExp_1
             this.LZ_Decoder.TabIndex = 5;
             this.LZ_Decoder.Text = "LZ Decode";
             this.LZ_Decoder.UseVisualStyleBackColor = false;
+            this.LZ_Decoder.Click += new System.EventHandler(this.LZ_Decoder_Click);
             // 
             // Huffman_Decoder
             // 
@@ -150,6 +166,8 @@ namespace InformationTheoryExp_1
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.hufcodelabel);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -159,6 +177,24 @@ namespace InformationTheoryExp_1
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Code";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 42);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(12, 17);
+            this.label14.TabIndex = 3;
+            this.label14.Text = " ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 17);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "LZW";
             // 
             // hufcodelabel
             // 
@@ -183,7 +219,7 @@ namespace InformationTheoryExp_1
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(33, 306);
+            this.label6.Location = new System.Drawing.Point(16, 27);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 21);
             this.label6.TabIndex = 0;
@@ -191,7 +227,7 @@ namespace InformationTheoryExp_1
             // 
             // DecodeBox
             // 
-            this.DecodeBox.Location = new System.Drawing.Point(26, 228);
+            this.DecodeBox.Location = new System.Drawing.Point(26, 242);
             this.DecodeBox.Multiline = true;
             this.DecodeBox.Name = "DecodeBox";
             this.DecodeBox.Size = new System.Drawing.Size(160, 34);
@@ -199,14 +235,53 @@ namespace InformationTheoryExp_1
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label15);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox4.Location = new System.Drawing.Point(437, 170);
+            this.groupBox4.Location = new System.Drawing.Point(437, 186);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(180, 140);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Code";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(17, 48);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(12, 17);
+            this.label15.TabIndex = 4;
+            this.label15.Text = " ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 31);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 17);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "LZW";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 75);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 17);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Hufcode:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 95);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = " ";
             // 
             // groupBox5
             // 
@@ -216,9 +291,9 @@ namespace InformationTheoryExp_1
             this.groupBox5.Controls.Add(this.groupBox2);
             this.groupBox5.Controls.Add(this.DecodeBox);
             this.groupBox5.Controls.Add(this.groupBox3);
-            this.groupBox5.Location = new System.Drawing.Point(358, 56);
+            this.groupBox5.Location = new System.Drawing.Point(427, 56);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(645, 344);
+            this.groupBox5.Size = new System.Drawing.Size(645, 382);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             // 
@@ -262,7 +337,7 @@ namespace InformationTheoryExp_1
             // 
             this.button1.BackColor = System.Drawing.Color.Silver;
             this.button1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(921, 483);
+            this.button1.Location = new System.Drawing.Point(990, 513);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(82, 39);
             this.button1.TabIndex = 6;
@@ -275,7 +350,7 @@ namespace InformationTheoryExp_1
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Mistral", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(308, 15);
+            this.label5.Location = new System.Drawing.Point(414, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(283, 38);
             this.label5.TabIndex = 16;
@@ -283,6 +358,7 @@ namespace InformationTheoryExp_1
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.groupBox7);
             this.groupBox6.Controls.Add(this.EncodeTextbox);
             this.groupBox6.Controls.Add(this.Huffman_Encoder);
             this.groupBox6.Controls.Add(this.label8);
@@ -291,38 +367,103 @@ namespace InformationTheoryExp_1
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox6.Location = new System.Drawing.Point(12, 56);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(176, 202);
+            this.groupBox6.Size = new System.Drawing.Size(391, 202);
             this.groupBox6.TabIndex = 18;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Huffman";
             // 
-            // Codelist
+            // groupBox7
             // 
-            this.Codelist.AutoSize = true;
-            this.Codelist.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Codelist.Location = new System.Drawing.Point(33, 276);
-            this.Codelist.Name = "Codelist";
-            this.Codelist.Size = new System.Drawing.Size(81, 17);
-            this.Codelist.TabIndex = 19;
-            this.Codelist.Text = "Huffman码表";
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox7.Location = new System.Drawing.Point(176, 22);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(200, 157);
+            this.groupBox7.TabIndex = 18;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Huffman 码表";
             // 
-            // label2
+            // groupBox8
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = " ";
+            this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.label4);
+            this.groupBox8.Controls.Add(this.button2);
+            this.groupBox8.Controls.Add(this.label3);
+            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox8.Location = new System.Drawing.Point(12, 266);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(391, 172);
+            this.groupBox8.TabIndex = 19;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "LZ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(58, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(12, 17);
+            this.label10.TabIndex = 22;
+            this.label10.Text = " ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 99);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(12, 17);
+            this.label9.TabIndex = 21;
+            this.label9.Text = " ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "LZ 码表";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Silver;
+            this.button2.Font = new System.Drawing.Font("Segoe Print", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(285, 41);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(81, 32);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Generate";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(17, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "单符号序列";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(17, 46);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(157, 25);
+            this.textBox1.TabIndex = 14;
             // 
             // Encoder_Decoder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1024, 534);
-            this.Controls.Add(this.Codelist);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(1093, 573);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
@@ -339,6 +480,10 @@ namespace InformationTheoryExp_1
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,10 +510,22 @@ namespace InformationTheoryExp_1
         private System.Windows.Forms.TextBox ProbOfHuff;
         private System.Windows.Forms.TextBox EncodeBox;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label Codelist;
         private System.Windows.Forms.Button HUFEncode;
         private System.Windows.Forms.Label hufcodelabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
     }
 }
