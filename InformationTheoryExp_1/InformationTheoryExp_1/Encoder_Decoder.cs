@@ -19,7 +19,7 @@ namespace InformationTheoryExp_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SystemFigure f1 = new SystemFigure();
+            EDcoderHome f1 = new EDcoderHome();
             f1.Show();
             this.Close();
         }
@@ -107,40 +107,56 @@ namespace InformationTheoryExp_1
             label14.Text = "";
             LZ lz = new LZ(textBox1.Text, textBox1.Lines[0].Length);
             string p, s, ps;
-
             string[] signal = new string[EncodeBox.Lines[0].Length];
+
+
             for (int i = 0; i < EncodeBox.Lines[0].Length; i++)     /*split the message into single word*/
             {
                 signal[i] = EncodeBox.Text.Substring(i, 1);
             }
-
-            p = signal[lz.LenOf_singleElem-1];
-            /* separate i and k, because if use i to control the whole process there will be a bug here */
-            int m = lz.LenOf_singleElem - 1; 
-            for (int i = lz.LenOf_singleElem-1; i < EncodeBox.Lines[0].Length - 1; i++)
+            
+            // Initialize the dict.
+            p = "";
+            s = signal[0];
+            ps = p + s;
+            if (lz.FindElem(ps) == 1)
             {
-                s = signal[i + 1];
+                p = s;
+            }
+            int l = 0;
+
+            /* separate i and k, because if use i to control the whole process there will be a bug here */
+            int m = lz.LenOf_singleElem - 1;
+            for (int i = 1; i < EncodeBox.Lines[0].Length; i++)
+            {
+                s = signal[i];
                 ps = p + s;
-                if(lz.FindElem(ps) == 1)
+                if (lz.FindElem(ps) == 1)
                 {
                     p = ps;
                     m--;
+                    l--;
                 }
                 else
                 {
                     lz.singleElem[m + 1] = ps;
                     lz.code[m + 1] = lz.code[m] + 1;
+                    lz.code_output[l] = lz.FindElem_code(p);
                     p = s;
                 }
                 m++;
+                l++;
             }
+            // To make sure the last one be coded
+            lz.code_output[l] = lz.FindElem_code(p);
+
 
             int k = 0;
             while (lz.singleElem[k] != "") 
             {
                 
                 label10.Text += lz.singleElem[k] + ":" + lz.code[k] + " ";
-                label14.Text += lz.code[k] + " ";
+                //label14.Text += lz.code[k] + " ";
                 if (k!=0 && k % 3 == 0)
                 {
                     label10.Text += "\n";
@@ -149,8 +165,13 @@ namespace InformationTheoryExp_1
                 
             }
 
-            this.Elem = lz.singleElem;
-            this.code = lz.code;
+            //Print the code
+            int code_index = 0;
+            while(lz.code_output[code_index] != 0)
+            {
+                label14.Text += lz.code_output[code_index] + " ";
+                code_index++;
+            }
 
         }
 
@@ -159,6 +180,9 @@ namespace InformationTheoryExp_1
             label9.Text = "";
 
             LZ lz = new LZ(textBox1.Text, textBox1.Lines[0].Length);
+
+            this.Elem = lz.singleElem;
+            this.code = lz.code;
 
             for (int i=0;i< textBox1.Lines[0].Length; i++)
             {
@@ -170,22 +194,53 @@ namespace InformationTheoryExp_1
         {
             label15.Text = "";
             string[] mess = DecodeBox.Text.Split(" ");
-            
-            for(int j = 0; j < mess.Length; j++)
+            string p, c, pc;
+            int pw, cw;
+            LZW_Decode Decoder = new LZW_Decode(textBox1.Text, textBox1.Lines[0].Length);
+
+
+            //Initialize the dict
+            pw = 0;
+            cw = Convert.ToInt32(mess[0]);
+            if(Decoder.ExistElem(cw) == 1)
             {
-                int i = 0;
-                while (this.code[i] != 0)
-                {
-                    if (this.code[i] == Convert.ToInt32(mess[j]))
-                    {
-                        label15.Text += this.Elem[i] + " ";
-                        break;
-                       
-                    }
-                    i++;
-                }
+                Decoder.Elem_output[0] = Decoder.FindElem(cw);
             }
-            
+            pw = cw;
+            int m = Decoder.LenOf_singleElem - 1;
+            for(int i = 1; i < mess.Length; i++)
+            {
+                cw = Convert.ToInt32(mess[i]);
+                if(Decoder.ExistElem(cw) == 1)
+                {
+                    Decoder.Elem_output[i] = Decoder.FindElem(cw);
+                    p = Decoder.FindElem(pw);
+                    c = Convert.ToString(Decoder.FindElem(cw)[0]);
+                    pc = p + c;
+                    Decoder.singleElem[m + 1] = pc;
+                    Decoder.code[m + 1] = Decoder.code[m] + 1;
+                    m++;
+                }
+                else
+                {
+                    p = Decoder.FindElem(pw);
+                    c = Convert.ToString(Decoder.FindElem(pw)[0]);
+                    pc = p + c;
+                    Decoder.singleElem[m + 1] = pc;
+                    Decoder.code[m + 1] = Decoder.code[m] + 1;
+                    Decoder.Elem_output[i] = pc;
+                    m++;
+                }
+                pw = cw;
+            }
+
+            int index = 0;
+            while (Decoder.Elem_output[index] != "")
+            {
+                label15.Text += Decoder.Elem_output[index];
+                index++;
+            }
+
         }
     }
 
@@ -194,12 +249,24 @@ namespace InformationTheoryExp_1
         public string[] singleElem = new string[100];
         public int LenOf_singleElem;
         public int[] code = new int[100];
+        public int[] code_output = new int[100];
 
         public LZ(string mess, int len)
         {
             this.LenOf_singleElem = len;
             this.singleElem = Elem_Init(mess);
             this.code = Code_Init();
+            this.code_output = Output_Init();
+        }
+
+        public int[] Output_Init()
+        {
+            int[] code = new int[100];
+            for (int i = 0; i < code.Length; i++)
+            {
+                    code[i] = 0;
+            }
+            return code;
         }
 
         public string[] Elem_Init(string message)
@@ -254,6 +321,106 @@ namespace InformationTheoryExp_1
             return 0;
         }
 
+        public int FindElem_code(string elem)
+        {
+            for (int i = 0; i < this.singleElem.Length; i++)
+            {
+                if (elem == singleElem[i])
+                {
+                    return i+1;
+                }
+            }
+            return -1;
+        }
+    }
+
+    public class LZW_Decode
+    {
+        public string[] singleElem = new string[100];
+        public int LenOf_singleElem;
+        public int[] code = new int[100];
+        public string[] Elem_output = new string[100];
+
+        public LZW_Decode(string mess, int len)
+        {
+            this.LenOf_singleElem = len;
+            this.singleElem = Elem_Init(mess);
+            this.code = Code_Init();
+            this.Elem_output = Init_outputElem();
+        }
+
+        public string[] Init_outputElem()
+        {
+            string[] Elem_output = new string[100];
+            for (int i = 0; i < Elem_output.Length; i++)
+            {
+                Elem_output[i] = "";
+            }
+            return Elem_output;
+        }
+
+        public string[] Elem_Init(string message)
+        {
+            string mess = message;
+            string[] signal = new string[100];
+            for (int i = 0; i < code.Length; i++)     /*split the message into single word*/
+            {
+                if (i < this.LenOf_singleElem)
+                {
+                    signal[i] = mess.Substring(i, 1);
+                }
+                else
+                {
+                    signal[i] = "";
+                }
+            }
+
+            return signal; /*return a string array*/
+        }
+
+        public int[] Code_Init()
+        {
+            int[] code = new int[100];
+            int cnt = 1;
+            for (int i = 0; i < code.Length; i++)
+            {
+                if (i < this.LenOf_singleElem)
+                {
+                    code[i] = cnt;
+                    cnt++;
+                }
+                else
+                {
+                    code[i] = 0;
+                }
+
+            }
+            return code;
+        }
+
+        public string FindElem(int index)
+        {
+            for(int i = 0; i < this.code.Length; i++)
+            {
+                if(index == this.code[i])
+                {
+                    return this.singleElem[i];
+                }
+            }
+            return "";
+        }
+
+        public int ExistElem(int index)
+        {
+            for (int i = 0; i < this.code.Length; i++)
+            {
+                if (index == this.code[i])
+                {
+                    return 1;
+                }
+            }
+            return 0;
+        }
     }
 
     public class Huffman

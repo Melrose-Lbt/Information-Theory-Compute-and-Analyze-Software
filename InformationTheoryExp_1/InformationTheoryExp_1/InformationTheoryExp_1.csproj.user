@@ -1,19 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="C1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="C2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="C3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DisSequenceEntropy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EDcoderHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Encoder_Decoder.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="HammingCoding.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="HelloFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Kraft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LinearCoding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Linearcoding1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Markov.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Rectify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RecurrentCoding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RecurrentCoding1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SignalEntropy.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Subpage2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SymmeDisMC.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SystemFigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SystemFigure2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UnSymmeDisMC.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

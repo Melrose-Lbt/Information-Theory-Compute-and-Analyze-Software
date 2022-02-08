@@ -35,8 +35,22 @@ namespace InformationTheoryExp_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Encoder_Decoder f5 = new Encoder_Decoder();
+            EDcoderHome f5 = new EDcoderHome();
             f5.Show();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DashBoard f = new DashBoard();
+            f.Show();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Markov f = new Markov();
+            f.Show();
             this.Close();
         }
     }

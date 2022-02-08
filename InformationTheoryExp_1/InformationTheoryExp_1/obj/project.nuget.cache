@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3o5MQOofwA9fsrB6IeBlgqggOOEEWQZOvC3ZSD8XS78hK2a1PG/BWwJrPu7UT9ieI9Bl+MIDg1jPUO5IaTczUg==",
+  "dgSpecHash": "ljr8z7E/d3wQRcgSLZMiM5MelW65A+ZQwvp/RRfTsGm1JS7XCWa5qAIhhR6EjW03h0Bf3+HQTorfEWwcxQg0Ww==",
   "success": true,
   "projectFilePath": "D:\\CSharpProject\\InformationTheoryExp_1\\InformationTheoryExp_1\\InformationTheoryExp_1.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\机械师\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

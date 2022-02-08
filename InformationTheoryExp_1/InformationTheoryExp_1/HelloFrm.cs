@@ -38,8 +38,8 @@ namespace InformationTheoryExp_1
             }
             if(UsrName.Text == "Shannon" && Usrcode.Text == "2001121")
             {
-                SystemFigure f2 = new SystemFigure();
-                f2.Show();
+                DashBoard  f = new DashBoard();
+                f.Show();
                 this.Close();
             }
         }
